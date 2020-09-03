@@ -24,12 +24,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2      
-      - uses: actions/setup-node@v1                
-      - name: Install packages
-      - run: npm install
-      - name: Run test on codebase        
-      - run: npm run test
       - uses: actions/checkout@v2        
       - name: Run tests
         run: |
