@@ -24,8 +24,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2          
+      - uses: actions/setup-node@v1 
+      - name: Install packages
+        run: npm install     
+      - name: run test for codebase
+        run: npm run test                     
+      - uses: actions/checkout@v2        
       - name: Run tests
         run: |
           if [ -f docker-compose.test.yml ]; then
