@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ci":"npm install",
     "test": "jest "
   },
   "author": "",
