@@ -28,10 +28,10 @@ jobs:
       - uses: actions/setup-node@v1 
       - name: Install packages
         run: npm install     
-      - name: run test for codebase
+      - name: run tests for codebase
         run: npm run test                     
       - uses: actions/checkout@v2        
-      - name: Run tests
+      - name: Run tests in container
         run: |
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
