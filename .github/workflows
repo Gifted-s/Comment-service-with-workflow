@@ -1,4 +1,4 @@
-name: Comment Microservice 
+name: Comment Microservice With the GitHub Workflow
 # This workflow is triggered on pushes to the repository.
 on: [push]
 
