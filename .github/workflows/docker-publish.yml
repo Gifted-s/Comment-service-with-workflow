@@ -28,8 +28,6 @@ jobs:
       - uses: actions/setup-node@v1 
       - name: Install packages
         run: npm install     
-      - uses: actions/checkout@v2          
-      - uses: actions/setup-node@v1 
       - name: run test for codebase
         run: npm run test                     
       - uses: actions/checkout@v2        
