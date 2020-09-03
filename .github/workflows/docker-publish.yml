@@ -25,7 +25,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - uses: actions/setup-node@v1
+      - uses: Gifted-s/Comment-service-with-workflow        
+        with:
+          node-version: 12
+      - name: Run test on codebase
+      - run: npm install
+      - run: npm run test
+      - uses: actions/checkout@v2        
       - name: Run tests
         run: |
           if [ -f docker-compose.test.yml ]; then
