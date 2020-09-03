@@ -8,8 +8,6 @@ const uuid = require('uuid').v1
 app.use(express.json())
 app.use(cors())
 let rootEndpoint = '/comment-api'
-let port = process.env.PORT || 3000
-app.listen(port)
 app.post(rootEndpoint + '/add-comment', (req, res, next) => {
 
     let comment = req.body
@@ -85,7 +83,14 @@ app.get(rootEndpoint + '/get-comments', (req, res) => {
     res.status(201).send({comments: commentDB })
 })
 
+let server = app.listen(3000, () => {
+  console.log('Server is listening on port 3000')
+})
+
 function clearDB(){
     commentDB=[]
 }
-module.exports = clearDB
+function closeServer(){
+    server.close()
+}
+module.exports = {clearDB, closeServer}

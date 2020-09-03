@@ -1,5 +1,5 @@
 const axios = require('axios')
-let clearDB = require('../app')
+let {clearDB, closeServer} = require('../app')
 const uuid = require('uuid').v1
 
 beforeAll(() => {
@@ -14,6 +14,9 @@ beforeAll(() => {
 
 beforeEach(()=>{
     clearDB()
+})
+afterAll(()=>{
+    closeServer()
 })
 let root = 'http://localhost:3000/comment-api'
 describe('adding comments', () => {
@@ -77,7 +80,7 @@ describe('editing comments', () => {
         }
         const editedResponse = await axios.patch(root + '/edit-comment/' + response.data.posted.id, editedComment)
         expect(editedResponse.status).toBe(201)
-        expect({ ...response.data.posted, ...editedComment }).toMatchObject(editedResponse.data.comment)
+        expect({ ...response.data.posted, ...editedComment, dateModified:null }).toMatchObject({...editedResponse.data.comment, dateModified: null})
     })
     it('must contain an id to edit a comment', async () => {
     
@@ -183,4 +186,5 @@ describe('getting all comments', () => {
         let comments= await axios.get(root + '/get-comments/')
         expect(comments.data.comments.length).toBe(6)
     })
+    
 })
