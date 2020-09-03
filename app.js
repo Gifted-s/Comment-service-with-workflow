@@ -67,15 +67,15 @@ app.delete(rootEndpoint + '/delete-comment/:id', (req, res) => {
 app.get(rootEndpoint + '/get-comment/:id', (req, res) => {
     let { id } = req.params
     if (!id) {
-        res.status(400).send({ error: 'id is required' })
+      return  res.status(400).send({ error: 'id is required' })
     }
     else {
         let comment = commentDB.find((comment) => comment.id === id)
         if (!comment) {
-            res.status(400).send({ error: 'no comment with this id' })
+         return   res.status(400).send({ error: 'no comment with this id' })
         }
         else {
-            res.status(201).send({ comment })
+         return    res.status(201).send({ comment })
         }
 
     }
