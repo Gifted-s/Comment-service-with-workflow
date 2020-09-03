@@ -1,5 +1,5 @@
 name: Comment Microservice With the GitHub Workflow
-# This workflow is triggered on pushes to the repository.
+# This workflow is triggered on pushes to the repository and merge.
 on: [push]
 
 jobs:
